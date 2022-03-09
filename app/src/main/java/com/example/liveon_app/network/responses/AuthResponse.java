@@ -1,6 +1,6 @@
-package com.example.liveon_app.network.requests;
+package com.example.liveon_app.network.responses;
 
-public class AuthRequest {
+public class AuthResponse {
 
     private Boolean success;
     private String token;
@@ -10,6 +10,17 @@ public class AuthRequest {
     private String fullname;
     private String city;
     private String state_abbr;
+
+    public AuthResponse(Boolean success, String token, String avatar_url, String email, String username, String fullname, String city, String state_abbr) {
+        this.success = success;
+        this.token = token;
+        this.avatar_url = avatar_url;
+        this.email = email;
+        this.username = username;
+        this.fullname = fullname;
+        this.city = city;
+        this.state_abbr = state_abbr;
+    }
 
     public Boolean getSuccess() {
         return success;
