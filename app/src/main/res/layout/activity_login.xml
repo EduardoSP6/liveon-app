@@ -10,8 +10,9 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_marginHorizontal="20dp"
-        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="175dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -27,7 +28,7 @@
             android:text="Faça o login com seu e-mail e senha de acesso."
             android:textColor="@color/white"
             android:textSize="15sp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="35dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -35,26 +36,33 @@
             android:id="@+id/inputEmail"
             android:layout_marginTop="50dp"
             android:inputType="textEmailAddress"
-            android:hint="Email"
+            android:hint="EMAIL"
+            android:textSize="11sp"
             android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputPassword"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="50dp"
             android:inputType="textPassword"
-            android:hint="Senha"
+            android:hint="SENHA"
+            android:textSize="11sp"
+            android:textColorHint="@color/white"
             android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogin"
-            android:layout_marginTop="20dp"
+            app:cornerRadius="18dp"
+            android:layout_marginTop="30dp"
             android:text="Fazer Login"
+            android:textColor="@color/white"
+            android:textSize="11sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             />
     </LinearLayout>
 

@@ -2,19 +2,18 @@ package com.example.liveon_app.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.liveon_app.databinding.ActivityLoginBinding;
 import com.example.liveon_app.interfaces.LoginResultCallback;
 import com.example.liveon_app.viewmodels.LoginViewModel;
 import com.example.liveon_app.viewmodels.LoginViewModelFactory;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 
 public class LoginActivity extends AppCompatActivity implements LoginResultCallback {
 
