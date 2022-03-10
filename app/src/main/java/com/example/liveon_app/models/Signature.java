@@ -4,6 +4,7 @@ import java.math.BigInteger;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.RealmResults;
 import io.realm.annotations.PrimaryKey;
 
 public class Signature extends RealmObject {
@@ -18,13 +19,14 @@ public class Signature extends RealmObject {
     private String fuel_type;
     private Integer doors_qtd;
     private Integer delivery_delay;
-    private BigInteger km;
+    private String km;
     private Integer months;
     private Integer plan_type;
     private String additional_franchise;
     private String monthly_price;
     private String extras;
     private String total_price;
+    private String username;
 
     private RealmList<VehicleImages> vehicleImages;
 
@@ -102,11 +104,11 @@ public class Signature extends RealmObject {
         this.delivery_delay = delivery_delay;
     }
 
-    public BigInteger getKm() {
+    public String getKm() {
         return km;
     }
 
-    public void setKm(BigInteger km) {
+    public void setKm(String km) {
         this.km = km;
     }
 
@@ -164,5 +166,13 @@ public class Signature extends RealmObject {
 
     public void setVehicleImages(RealmList<VehicleImages> vehicleImages) {
         this.vehicleImages = vehicleImages;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

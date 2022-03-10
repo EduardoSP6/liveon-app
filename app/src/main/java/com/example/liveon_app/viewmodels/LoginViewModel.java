@@ -1,12 +1,8 @@
 package com.example.liveon_app.viewmodels;
 
-import android.content.Context;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
-import android.widget.Toast;
 
 import com.example.liveon_app.interfaces.LoginResultCallback;
 import com.example.liveon_app.network.ApiRoutes;
@@ -70,9 +66,9 @@ public class LoginViewModel extends ViewModel {
         return userRepository.getAuthenticated() != null;
     }
 
-    public void authUser(String email, String password) {
+    public void login(String email, String password) {
 
-        setEmail(email);
+        setEmail(email.trim());
         setPassword(password);
 
         if (!isEmailValid()) {

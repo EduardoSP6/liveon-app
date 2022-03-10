@@ -5,7 +5,6 @@ import io.realm.annotations.Required;
 
 public class VehicleImages extends RealmObject {
 
-    @Required
     private Signature signature;
 
     @Required

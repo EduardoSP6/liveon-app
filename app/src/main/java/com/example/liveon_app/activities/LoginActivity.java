@@ -1,14 +1,17 @@
 package com.example.liveon_app.activities;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.liveon_app.databinding.ActivityLoginBinding;
 import com.example.liveon_app.interfaces.LoginResultCallback;
 import com.example.liveon_app.viewmodels.LoginViewModel;
+import com.example.liveon_app.viewmodels.LoginViewModelFactory;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -20,49 +23,35 @@ public class LoginActivity extends AppCompatActivity implements LoginResultCallb
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
-        this.setTitle("LiveOn");
-
-        LoginViewModel viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+        LoginViewModel viewModel = new ViewModelProvider(this,
+                new LoginViewModelFactory(this))
+                .get(LoginViewModel.class);
 
         if (viewModel.isAuthenticated()) {
-            closeActivity();
+            redirectUser();
         }
 
         binding.btnLogin.setOnClickListener(view1 -> {
             String email = binding.inputEmail.getText().toString();
             String password = binding.inputPassword.getText().toString();
 
-            final ProgressDialog progress = new ProgressDialog(this);
-            progress.setTitle("Carregando...");
-            progress.setMessage("");
-            progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progress.setMax(100);
-            progress.setCancelable(false);
-            progress.setCanceledOnTouchOutside(false);
-            progress.show();
-
-            new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        viewModel.authUser(email, password);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    } finally {
-                        progress.dismiss();
-                    }
-                }
-            }.start();
+            viewModel.login(email, password);
         });
     }
 
     @Override
     public void onSuccess(String message) {
-        closeActivity();
+        redirectUser();
     }
 
     @Override
@@ -70,7 +59,7 @@ public class LoginActivity extends AppCompatActivity implements LoginResultCallb
         Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 
-    private void closeActivity() {
+    private void redirectUser() {
         startActivity(new Intent(LoginActivity.this, MainActivity.class));
         finish();
     }

@@ -8,6 +8,7 @@ public class Order extends RealmObject {
     @PrimaryKey
     private Integer order_id;
     private String submodel_name;
+    private String username;
 
     public Order() {}
 
@@ -25,5 +26,13 @@ public class Order extends RealmObject {
 
     public void setSubmodel_name(String submodel_name) {
         this.submodel_name = submodel_name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

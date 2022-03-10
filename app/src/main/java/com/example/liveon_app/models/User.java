@@ -1,5 +1,6 @@
 package com.example.liveon_app.models;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -12,6 +13,9 @@ public class User extends RealmObject {
     private String city;
     private String state_abbr;
     private String token;
+
+    private RealmList<Order> orders;
+    private RealmList<Signature> signatures;
 
     public User() {}
 
@@ -70,5 +74,21 @@ public class User extends RealmObject {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public RealmList<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(RealmList<Order> orders) {
+        this.orders = orders;
+    }
+
+    public RealmList<Signature> getSignatures() {
+        return signatures;
+    }
+
+    public void setSignatures(RealmList<Signature> signatures) {
+        this.signatures = signatures;
     }
 }
