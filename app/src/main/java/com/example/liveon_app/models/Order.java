@@ -1,5 +1,6 @@
 package com.example.liveon_app.models;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -9,6 +10,7 @@ public class Order extends RealmObject {
     private Integer order_id;
     private String submodel_name;
     private String username;
+    private RealmList<OrderStatus> statuses;
 
     public Order() {}
 
@@ -34,5 +36,13 @@ public class Order extends RealmObject {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public RealmList<OrderStatus> getStatuses() {
+        return statuses;
+    }
+
+    public void setStatuses(RealmList<OrderStatus> statuses) {
+        this.statuses = statuses;
     }
 }

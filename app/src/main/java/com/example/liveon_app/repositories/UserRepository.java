@@ -6,20 +6,18 @@ import io.realm.Realm;
 
 public class UserRepository {
 
-    public User getAuthenticated() {
-        Realm realm = Realm.getDefaultInstance();
+    Realm realm = Realm.getDefaultInstance();
 
-        User user = realm.where(User.class)
+    public User getAuthenticated() {
+        return realm.where(User.class)
                 .isNotEmpty("token")
                 .findFirst();
-
-        realm.close();
-        return user;
     }
 
     public User create(String username, String fullname, String avatar, String city, String state, String token) {
-        Realm realm = Realm.getDefaultInstance();
         try {
+            realm.beginTransaction();
+
             User user = new User();
             user.setUsername(username);
             user.setFullname(fullname);
@@ -28,25 +26,23 @@ public class UserRepository {
             user.setState_abbr(state);
             user.setToken(token);
 
+            realm.copyToRealm(user);
+            realm.commitTransaction();
+
             return user;
 
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            realm.close();
         }
         return null;
     }
 
     public boolean destroy(User user) {
-        Realm realm = Realm.getDefaultInstance();
         try {
             user.deleteFromRealm();
             return true;
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            realm.close();
         }
         return false;
     }

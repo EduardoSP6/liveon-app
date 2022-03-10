@@ -36,10 +36,9 @@
                 app:cardCornerRadius="70dp">
                 <ImageView
                     android:id="@+id/imgAvatar"
-                    android:background="@color/black"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    />
+                    android:contentDescription="User avatar" />
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
@@ -83,6 +82,43 @@
             android:background="@color/divider"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
+
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/btnPrevius"
+                android:layout_weight="0.2"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_baseline_keyboard_arrow_left_24"
+                android:layout_width="20dp"
+                android:layout_height="40dp"
+                android:gravity="start"
+                />
+
+            <TextSwitcher
+                android:id="@+id/txtSwitcher"
+                android:layout_weight="0.6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                />
+
+            <ImageButton
+                android:id="@+id/btnNext"
+                android:layout_weight="0.2"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                android:layout_width="20dp"
+                android:layout_height="40dp"
+                />
+
+        </LinearLayout>
 
     </LinearLayout>
 

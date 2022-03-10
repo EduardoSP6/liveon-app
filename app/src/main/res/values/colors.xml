@@ -11,4 +11,5 @@
     <color name="purple_medium">#603EDC</color>
     <color name="primary_text_color">#2E2F35</color>
     <color name="divider">#D1D1D6</color>
+    <color name="green_check">#27EDB5</color>
 </resources>
