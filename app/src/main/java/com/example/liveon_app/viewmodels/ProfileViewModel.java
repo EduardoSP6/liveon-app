@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.liveon_app.models.Order;
+import com.example.liveon_app.models.OrderStatus;
 import com.example.liveon_app.models.User;
 import com.example.liveon_app.network.ApiRoutes;
 import com.example.liveon_app.network.responses.ProfileResponse;
@@ -49,6 +50,14 @@ public class ProfileViewModel extends ViewModel {
         }
 
         return orders;
+    }
+
+    public List<OrderStatus> getOrderStatusList(Order order) {
+        return orderRepository.getOrderStatuses(order);
+    }
+
+    public boolean logout(User user) {
+        return userRepository.destroy(user);
     }
 
     private List<Order> loadOrders() {

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class OrderRepository {
 
@@ -42,5 +43,11 @@ public class OrderRepository {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public List<OrderStatus> getOrderStatuses(Order order) {
+        return realm.where(OrderStatus.class)
+                .equalTo("order_id", order.getOrder_id())
+                .findAll();
     }
 }

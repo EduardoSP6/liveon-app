@@ -15,7 +15,7 @@ public class LiveOnApplication extends Application {
         Realm.init(getApplicationContext());
 
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
-                .name("liveondb")
+                .name("liveondb.realm")
                 .deleteRealmIfMigrationNeeded()
                 .allowWritesOnUiThread(true)
                 .allowQueriesOnUiThread(true)
