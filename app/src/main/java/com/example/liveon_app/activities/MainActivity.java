@@ -55,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel.getOrders().observe(this, this::buildOrderStatusComponents);
 
+        binding.btnSignatures.setOnClickListener(view12 -> {
+            startActivity(new Intent(MainActivity.this, SignaturesActivity.class));
+            finish();
+        });
+
         binding.btnLogout.setOnClickListener(view1 -> {
             if (viewModel.logout(user)) {
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
