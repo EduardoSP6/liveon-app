@@ -10,10 +10,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.lifecycle.ViewModelProvider;
-
 import com.example.liveon_app.R;
 import com.example.liveon_app.databinding.ActivityMainBinding;
 import com.example.liveon_app.models.Order;
@@ -24,6 +20,10 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProvider;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -126,7 +126,9 @@ public class MainActivity extends AppCompatActivity {
 
         binding.rdGroupStatus.removeAllViews();
 
-        RadioGroup.LayoutParams params = new RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        RadioGroup.LayoutParams params = new RadioGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+        );
         params.setMargins(0, 30, 0, 0);
 
         for (OrderStatus orderStatus: orderStatuses) {

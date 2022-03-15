@@ -2,10 +2,6 @@ package com.example.liveon_app.viewmodels;
 
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-
 import com.example.liveon_app.models.Order;
 import com.example.liveon_app.models.OrderStatus;
 import com.example.liveon_app.models.User;
@@ -17,6 +13,9 @@ import com.example.liveon_app.utils.RetrofitConfig;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -75,7 +74,7 @@ public class ProfileViewModel extends ViewModel {
                 ProfileResponse responseBody = response.body();
 
                 if (response.isSuccessful() && responseBody != null && responseBody.getSuccess()) {
-                    createProfile(responseBody);
+                    createOrders(responseBody);
                 }
             }
 
@@ -88,7 +87,7 @@ public class ProfileViewModel extends ViewModel {
         });
     }
 
-    private void createProfile(ProfileResponse data) {
+    private void createOrders(ProfileResponse data) {
         for (Order order : data.getOrders()) {
             orderRepository.create(
                     order.getOrder_id(),
@@ -97,7 +96,6 @@ public class ProfileViewModel extends ViewModel {
                     order.getStatuses()
             );
         }
-
-        loadOrders();
+        getOrders();
     }
 }
