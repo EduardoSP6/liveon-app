@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         String cityAndState = user.getCity() +" - "+ user.getState_abbr();
         binding.txtCity.setText(cityAndState);
 
+        binding.btnPrevius.setEnabled(false);
+
         viewModel.getOrders().observe(this, this::buildOrderStatusComponents);
 
         binding.btnSignatures.setOnClickListener(view12 -> {
@@ -87,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (position.equals(count)) {
                 position.set(0);
+                binding.btnPrevius.setEnabled(false);
             }
 
             Order order = orders.get(position.intValue());
@@ -102,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (position.intValue() < 0) {
                 position.set( (orders.size() - 1) );
+                binding.btnNext.setEnabled(false);
             }
 
             Order order = orders.get(position.intValue());
