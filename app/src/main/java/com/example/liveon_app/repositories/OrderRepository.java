@@ -17,6 +17,10 @@ public class OrderRepository {
         return realm.where(Order.class).equalTo("username", username).findAll();
     }
 
+    public Order findById(Integer id) {
+        return realm.where(Order.class).equalTo("order_id", id).findFirst();
+    }
+
     public Order create(Integer order_id, String submodel_name, String username, List<OrderStatus> statuses) {
         try {
             realm.beginTransaction();

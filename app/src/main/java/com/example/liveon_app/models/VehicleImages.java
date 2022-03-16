@@ -8,7 +8,7 @@ public class VehicleImages extends RealmObject {
     private Signature signature;
 
     @Required
-    private String url;
+    private String image_url;
 
     public VehicleImages() {}
 
@@ -20,11 +20,11 @@ public class VehicleImages extends RealmObject {
         this.signature = signature;
     }
 
-    public String getUrl() {
-        return url;
+    public String getImage_url() {
+        return image_url;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 }
