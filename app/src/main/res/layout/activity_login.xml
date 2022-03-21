@@ -20,12 +20,13 @@
             android:layout_gravity="center"
             android:src="@drawable/logo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/logo_image" />
 
         <TextView
             android:layout_marginHorizontal="70dp"
             android:textAlignment="center"
-            android:text="Faça o login com seu e-mail e senha de acesso."
+            android:text="@string/login_title"
             android:textColor="@color/white"
             android:textSize="15sp"
             android:layout_marginTop="35dp"
@@ -36,7 +37,7 @@
             android:id="@+id/inputEmail"
             android:layout_marginTop="50dp"
             android:inputType="textEmailAddress"
-            android:hint="EMAIL"
+            android:hint="@string/email"
             android:textSize="14sp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
@@ -47,7 +48,7 @@
             android:id="@+id/inputPassword"
             android:layout_marginTop="50dp"
             android:inputType="textPassword"
-            android:hint="SENHA"
+            android:hint="@string/password"
             android:textSize="14sp"
             android:textColorHint="@color/white"
             android:textColor="@color/white"
@@ -58,7 +59,7 @@
             android:id="@+id/btnLogin"
             app:cornerRadius="18dp"
             android:layout_marginTop="30dp"
-            android:text="Fazer Login"
+            android:text="@string/do_login"
             android:textColor="@color/white"
             android:textSize="11sp"
             android:layout_width="match_parent"

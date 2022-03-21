@@ -39,9 +39,7 @@ public class UserRepository {
 
     public boolean destroy(User user) {
         try {
-            realm.executeTransaction(realm -> {
-                user.deleteFromRealm();
-            });
+            realm.executeTransaction(realm -> user.deleteFromRealm());
             return true;
         } catch (Exception e) {
             e.printStackTrace();

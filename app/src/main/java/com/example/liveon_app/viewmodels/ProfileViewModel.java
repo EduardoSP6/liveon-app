@@ -31,7 +31,7 @@ public class ProfileViewModel extends ViewModel {
     public ProfileViewModel() {
         userRepository = new UserRepository();
         orderRepository = new OrderRepository();
-        orders = new MutableLiveData<List<Order>>();
+        orders = new MutableLiveData<>();
     }
 
     public User getUser() {

@@ -25,16 +25,12 @@ public class LoginViewModel extends ViewModel {
 
     private String email;
     private String password;
-    private LoginResultCallback loginResultCallback;
+    private final LoginResultCallback loginResultCallback;
 
     public LoginViewModel(LoginResultCallback loginResultCallback) {
         this.loginResultCallback = loginResultCallback;
         authUserLiveData = new MutableLiveData<>();
         userRepository = new UserRepository();
-    }
-
-    public MutableLiveData<AuthResponse> getAuthUserLiveData() {
-        return authUserLiveData;
     }
 
     public String getEmail() {

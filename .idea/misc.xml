@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/ProjetosAndroid/liveon-app/app/src/main/res/layout/activity_main.xml" value="0.1685185185185185" />
-        <entry key="..\:/ProjetosAndroid/liveon-app/app/src/main/res/layout/activity_signatures.xml" value="0.1707193515704154" />
-        <entry key="..\:/ProjetosAndroid/liveon-app/app/src/main/res/layout/signature_list_item.xml" value="0.21" />
+        <entry key="..\:/ProjetosAndroid/liveon-app/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/ProjetosAndroid/liveon-app/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/ProjetosAndroid/liveon-app/app/src/main/res/layout/activity_order_detail.xml" value="0.1" />
+        <entry key="..\:/ProjetosAndroid/liveon-app/app/src/main/res/layout/activity_signatures.xml" value="0.21" />
+        <entry key="..\:/ProjetosAndroid/liveon-app/app/src/main/res/layout/signature_list_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
       </map>

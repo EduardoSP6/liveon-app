@@ -12,4 +12,8 @@
     <color name="primary_text_color">#2E2F35</color>
     <color name="divider">#D1D1D6</color>
     <color name="green_check">#27EDB5</color>
+    <color name="light_gray">#F2F2F2</color>
+    <color name="dark_gray">#A7A9AC</color>
+    <color name="blue_800">#4839B2</color>
+    <color name="black_600">#2E2F35</color>
 </resources>

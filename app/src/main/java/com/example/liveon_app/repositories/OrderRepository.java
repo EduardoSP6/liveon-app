@@ -2,12 +2,15 @@ package com.example.liveon_app.repositories;
 
 import com.example.liveon_app.models.Order;
 import com.example.liveon_app.models.OrderStatus;
+import com.example.liveon_app.models.OrderValue;
+import com.example.liveon_app.models.Signature;
+import com.example.liveon_app.models.Vehicle;
 
 import java.util.List;
 import java.util.UUID;
 
 import io.realm.Realm;
-import io.realm.RealmResults;
+import io.realm.exceptions.RealmException;
 
 public class OrderRepository {
 
@@ -53,5 +56,69 @@ public class OrderRepository {
         return realm.where(OrderStatus.class)
                 .equalTo("order_id", order.getOrder_id())
                 .findAll();
+    }
+
+    public Order setOrderVehicle(Order order, String vehicleUuid) {
+        try {
+            realm.beginTransaction();
+
+            Vehicle vehicle = realm.where(Vehicle.class)
+                    .equalTo("uuid", vehicleUuid)
+                    .findFirst();
+
+            order.setVehicle(vehicle);
+
+            realm.copyToRealmOrUpdate(order);
+            realm.commitTransaction();
+
+            return order;
+
+        } catch (RealmException e) {
+            realm.cancelTransaction();
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Order setOrderSignature(Order order, String signatureUuid) {
+        try {
+            realm.beginTransaction();
+
+            Signature signature = realm.where(Signature.class)
+                    .equalTo("uuid", signatureUuid)
+                    .findFirst();
+
+            order.setSignature(signature);
+
+            realm.copyToRealmOrUpdate(order);
+            realm.commitTransaction();
+
+            return order;
+
+        } catch (RealmException e) {
+            realm.cancelTransaction();
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Order setOrderValues(Order order, String orderValueUuid) {
+        try {
+            realm.beginTransaction();
+
+            OrderValue orderValue = realm.where(OrderValue.class)
+                    .equalTo("uuid", orderValueUuid)
+                    .findFirst();
+
+            order.setOrderValue(orderValue);
+
+            realm.copyToRealmOrUpdate(order);
+            realm.commitTransaction();
+
+        } catch (RealmException e) {
+            realm.cancelTransaction();
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -12,6 +12,12 @@ public class Order extends RealmObject {
     private String username;
     private RealmList<OrderStatus> statuses;
 
+    private Vehicle vehicle;
+
+    private Signature signature;
+
+    private OrderValue orderValue;
+
     public Order() {}
 
     public Integer getOrder_id() {
@@ -44,5 +50,29 @@ public class Order extends RealmObject {
 
     public void setStatuses(RealmList<OrderStatus> statuses) {
         this.statuses = statuses;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public Signature getSignature() {
+        return signature;
+    }
+
+    public void setSignature(Signature signature) {
+        this.signature = signature;
+    }
+
+    public OrderValue getOrderValue() {
+        return orderValue;
+    }
+
+    public void setOrderValue(OrderValue orderValue) {
+        this.orderValue = orderValue;
     }
 }

@@ -1,18 +1,18 @@
 package com.example.liveon_app.repositories;
 
 import com.example.liveon_app.models.Order;
-import com.example.liveon_app.models.Signature;
+import com.example.liveon_app.models.OrderValue;
 
 import java.util.UUID;
 
 import io.realm.Realm;
 import io.realm.exceptions.RealmException;
 
-public class SignatureRepository {
+public class OrderValueRepository {
 
     Realm realm = Realm.getDefaultInstance();
 
-    public Signature create(Integer orderId, Integer months, Integer planType, String additionalFranchise) {
+    public OrderValue create(Integer orderId, String monthlyPrice, String extras, String totalPrice) {
         try {
             realm.beginTransaction();
 
@@ -20,17 +20,17 @@ public class SignatureRepository {
                     .equalTo("order_id", orderId)
                     .findFirst();
 
-            Signature signature = new Signature();
-            signature.setUuid(UUID.randomUUID().toString());
-            signature.setOrder(order);
-            signature.setMonths(months);
-            signature.setPlanType(planType);
-            signature.setAdditionalFranchise(additionalFranchise);
+            OrderValue orderValue = new OrderValue();
+            orderValue.setUuid(UUID.randomUUID().toString());
+            orderValue.setOrder(order);
+            orderValue.setMonthlyPrice(monthlyPrice);
+            orderValue.setExtras(extras);
+            orderValue.setTotalPrice(totalPrice);
 
-            realm.copyToRealm(signature);
+            realm.copyToRealm(orderValue);
             realm.commitTransaction();
 
-            return signature;
+            return orderValue;
 
         } catch (RealmException e) {
             realm.cancelTransaction();

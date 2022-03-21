@@ -9,4 +9,24 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="login_title">Faça o login com seu e-mail e senha de acesso.</string>
+    <string name="email">EMAIL</string>
+    <string name="password">SENHA</string>
+    <string name="do_login">Fazer Login</string>
+    <string name="my_profile">MEU PERFIL</string>
+    <string name="user_avatar">User avatar</string>
+    <string name="order_status">Status de Acompanhamento</string>
+    <string name="my_signatures">Minhas Assinaturas</string>
+    <string name="logout">Sair</string>
+    <string name="back_button">back button</string>
+    <string name="forward_button">forward button</string>
+    <string name="monthly_payment">Mensalidade</string>
+    <string name="signature_information">Informações da Assinatura</string>
+    <string name="months">meses</string>
+    <string name="additional_km">km adicional</string>
+    <string name="values">Valores</string>
+    <string name="monthly_rent">Aluguel Mensal</string>
+    <string name="accessories">Acessórios</string>
+    <string name="total">Total</string>
+    <string name="logo_image">logo image</string>
 </resources>

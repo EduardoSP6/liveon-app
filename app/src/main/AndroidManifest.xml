@@ -17,6 +17,7 @@
         tools:targetApi="n">
         <activity
             android:name=".activities.OrderDetailActivity"
+            android:parentActivityName=".activities.SignaturesActivity"
             android:exported="false" />
         <activity
             android:name=".activities.SignaturesActivity"

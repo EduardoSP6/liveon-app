@@ -1,31 +1,30 @@
 package com.example.liveon_app.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.liveon_app.activities.OrderDetailActivity;
 import com.example.liveon_app.databinding.SignatureListItemBinding;
 import com.example.liveon_app.models.Order;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 /** RecyclerView adapter **/
 public class SignatureListAdapter extends RecyclerView.Adapter<SignatureListAdapter.SignatureListViewHolder>{
 
     private final Context ctx;
-    private final FragmentManager fm;
-    private final List<Order> orders;
+    private List<Order> orders = new ArrayList<>();
     private SignatureListItemBinding binding;
 
-    public SignatureListAdapter(Context ctx, FragmentManager fm, List<Order> orders) {
+    public SignatureListAdapter(Context ctx) {
         this.ctx = ctx;
-        this.fm = fm;
-        this.orders = orders;
     }
 
     @NonNull
@@ -36,7 +35,7 @@ public class SignatureListAdapter extends RecyclerView.Adapter<SignatureListAdap
                 parent,
                 false);
 
-        return new SignatureListAdapter.SignatureListViewHolder(binding.getRoot(), this.fm, this.ctx);
+        return new SignatureListAdapter.SignatureListViewHolder(binding.getRoot(), this.ctx);
     }
 
     @Override
@@ -46,9 +45,6 @@ public class SignatureListAdapter extends RecyclerView.Adapter<SignatureListAdap
 
     @Override
     public int getItemCount() {
-        if (orders == null) {
-            return 0;
-        }
         return orders.size();
     }
 
@@ -62,16 +58,19 @@ public class SignatureListAdapter extends RecyclerView.Adapter<SignatureListAdap
         return position;
     }
 
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+        notifyDataSetChanged();
+    }
+
     /** RecyclerView viewholder **/
     class SignatureListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private Context ctx;
-        private FragmentManager fm;
+        private final Context ctx;
         private int itemPosition;
 
-        public SignatureListViewHolder(@NonNull View itemView, FragmentManager fm, Context ctx) {
+        public SignatureListViewHolder(@NonNull View itemView, Context ctx) {
             super(itemView);
             this.ctx = ctx;
-            this.fm = fm;
 
             itemView.setOnClickListener(this);
         }
@@ -86,6 +85,12 @@ public class SignatureListAdapter extends RecyclerView.Adapter<SignatureListAdap
         @Override
         public void onClick(View view) {
 
+            Order order = orders.get(itemPosition);
+
+            Intent intent = new Intent(ctx.getApplicationContext(), OrderDetailActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("order_id", order.getOrder_id());
+            ctx.startActivity(intent);
         }
     }
 }

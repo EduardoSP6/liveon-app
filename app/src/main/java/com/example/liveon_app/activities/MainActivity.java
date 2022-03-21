@@ -19,6 +19,7 @@ import com.example.liveon_app.viewmodels.ProfileViewModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();

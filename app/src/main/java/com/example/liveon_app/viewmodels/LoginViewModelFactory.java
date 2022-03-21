@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 public class LoginViewModelFactory extends ViewModelProvider.NewInstanceFactory {
-    private LoginResultCallback loginResultCallback;
+    private final LoginResultCallback loginResultCallback;
 
     public LoginViewModelFactory(LoginResultCallback loginResultCallback) {
         this.loginResultCallback = loginResultCallback;

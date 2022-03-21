@@ -15,6 +15,8 @@ import com.example.liveon_app.interfaces.LoginResultCallback;
 import com.example.liveon_app.viewmodels.LoginViewModel;
 import com.example.liveon_app.viewmodels.LoginViewModelFactory;
 
+import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity implements LoginResultCallback {
 
     private ActivityLoginBinding binding;
@@ -24,7 +26,7 @@ public class LoginActivity extends AppCompatActivity implements LoginResultCallb
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -41,8 +43,8 @@ public class LoginActivity extends AppCompatActivity implements LoginResultCallb
         }
 
         binding.btnLogin.setOnClickListener(view1 -> {
-            String email = binding.inputEmail.getText().toString();
-            String password = binding.inputPassword.getText().toString();
+            String email = Objects.requireNonNull(binding.inputEmail.getText()).toString();
+            String password = Objects.requireNonNull(binding.inputPassword.getText()).toString();
 
             viewModel.login(email, password);
         });

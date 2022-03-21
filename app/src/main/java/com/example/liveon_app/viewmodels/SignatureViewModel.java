@@ -19,7 +19,7 @@ public class SignatureViewModel extends ViewModel {
     public SignatureViewModel() {
         userRepository = new UserRepository();
         orderRepository = new OrderRepository();
-        orders = new MutableLiveData<List<Order>>();
+        orders = new MutableLiveData<>();
     }
 
     public User getUser() {
