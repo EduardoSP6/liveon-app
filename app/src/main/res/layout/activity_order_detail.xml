@@ -13,6 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -65,7 +71,6 @@
                 app:radius="6dp"
                 app:slideInterval="6000"
                 app:strokeColor="@color/dark_gray"
-                android:padding="40dp"
                 app:disableAutoPlayOnUserInteraction="true"
                 app:strokeWidth="1dp"/>
         </LinearLayout>

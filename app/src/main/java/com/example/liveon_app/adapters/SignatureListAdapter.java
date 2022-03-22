@@ -1,10 +1,13 @@
 package com.example.liveon_app.adapters;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.liveon_app.activities.OrderDetailActivity;
 import com.example.liveon_app.databinding.SignatureListItemBinding;
@@ -13,18 +16,15 @@ import com.example.liveon_app.models.Order;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 /** RecyclerView adapter **/
 public class SignatureListAdapter extends RecyclerView.Adapter<SignatureListAdapter.SignatureListViewHolder>{
 
-    private final Context ctx;
+    private final Activity parentActivity;
     private List<Order> orders = new ArrayList<>();
     private SignatureListItemBinding binding;
 
-    public SignatureListAdapter(Context ctx) {
-        this.ctx = ctx;
+    public SignatureListAdapter(Activity parentActivity) {
+        this.parentActivity = parentActivity;
     }
 
     @NonNull
@@ -35,7 +35,7 @@ public class SignatureListAdapter extends RecyclerView.Adapter<SignatureListAdap
                 parent,
                 false);
 
-        return new SignatureListAdapter.SignatureListViewHolder(binding.getRoot(), this.ctx);
+        return new SignatureListAdapter.SignatureListViewHolder(binding.getRoot(), this.parentActivity);
     }
 
     @Override
@@ -65,12 +65,12 @@ public class SignatureListAdapter extends RecyclerView.Adapter<SignatureListAdap
 
     /** RecyclerView viewholder **/
     class SignatureListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private final Context ctx;
+        private final Activity parentActivity;
         private int itemPosition;
 
-        public SignatureListViewHolder(@NonNull View itemView, Context ctx) {
+        public SignatureListViewHolder(@NonNull View itemView, Activity parentActivity) {
             super(itemView);
-            this.ctx = ctx;
+            this.parentActivity = parentActivity;
 
             itemView.setOnClickListener(this);
         }
@@ -87,10 +87,9 @@ public class SignatureListAdapter extends RecyclerView.Adapter<SignatureListAdap
 
             Order order = orders.get(itemPosition);
 
-            Intent intent = new Intent(ctx.getApplicationContext(), OrderDetailActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            Intent intent = new Intent(parentActivity.getApplicationContext(), OrderDetailActivity.class);
             intent.putExtra("order_id", order.getOrder_id());
-            ctx.startActivity(intent);
+            parentActivity.startActivity(intent);
         }
     }
 }

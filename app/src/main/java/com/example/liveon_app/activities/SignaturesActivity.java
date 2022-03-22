@@ -43,7 +43,7 @@ public class SignaturesActivity extends AppCompatActivity {
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setHasFixedSize(true);
 
-        SignatureListAdapter mAdapter = new SignatureListAdapter(getApplicationContext());
+        SignatureListAdapter mAdapter = new SignatureListAdapter(SignaturesActivity.this);
         mRecyclerView.setAdapter(mAdapter);
 
         viewModel.getOrders().observe(this, mAdapter::setOrders);

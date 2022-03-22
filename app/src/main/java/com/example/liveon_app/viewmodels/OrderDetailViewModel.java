@@ -2,6 +2,11 @@ package com.example.liveon_app.viewmodels;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+
 import com.example.liveon_app.models.Order;
 import com.example.liveon_app.models.OrderValue;
 import com.example.liveon_app.models.Signature;
@@ -18,10 +23,6 @@ import com.example.liveon_app.repositories.VehicleImageRepository;
 import com.example.liveon_app.repositories.VehicleRepository;
 import com.example.liveon_app.utils.RetrofitConfig;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -148,12 +149,12 @@ public class OrderDetailViewModel extends ViewModel {
                 orderValueDetail.getTotalPrice()
         );
 
-        existOrder = orderRepository.setOrderVehicle(existOrder, vehicle.getUuid());
+        orderRepository.setOrderVehicle(existOrder, vehicle.getUuid());
 
-        existOrder = orderRepository.setOrderSignature(existOrder, signature.getUuid());
+        orderRepository.setOrderSignature(existOrder, signature.getUuid());
 
-        existOrder = orderRepository.setOrderValues(existOrder, orderValue.getUuid());
+        orderRepository.setOrderValues(existOrder, orderValue.getUuid());
 
-        order.postValue(existOrder);
+        getOrderDetail(getOrderId());
     }
 }
